@@ -1,4 +1,4 @@
-module gitlab.choicetechlab.com/common/log-client
+module github.com/prathameshbordwekar/log-client
 
 go 1.24.0
 
