@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	c "gitlab.choicetechlab.com/common/log-client/constants"
-	dm "gitlab.choicetechlab.com/common/log-client/datamodels"
+	c "github.com/prathameshbordwekar/log-client/constants"
+	dm "github.com/prathameshbordwekar/log-client/datamodels"
 
 	"github.com/IBM/sarama"
 	"github.com/google/uuid"
@@ -123,11 +123,7 @@ func sendLogMessage(transactionId string, interfaceName string, operationName st
 			Topic: kafkaLogTopic,
 			Value: sarama.ByteEncoder(jsonLogMessage),
 		}
-
-		select {
-		case logCh <- msg:
-		default:
-		}
+		logCh <- msg
 	}
 }
 
